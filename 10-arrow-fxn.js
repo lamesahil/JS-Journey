@@ -52,3 +52,5 @@ console.log(name())
 // const myArray = [2, 5, 3, 7, 8]
 
 // myArray.forEach()
+
+//basically this arrow fxn mei nhi hota use bs object mei aur uske and rjo function rehte usme use hota h.
