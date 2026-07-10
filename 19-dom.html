@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>DOM learning</title>
+    <style>
+        .bg-black{
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+<body class="bg-black">
+    <div >
+        <h1  id="title" class="heading">DOM learning on Chai aur code <span style="display: none;">test text</span></h1>
+        <h2>Football is a beautiful game</h2>
+        <h2>I love football</h2>
+        <h2>Love for the game is unmatched</h2>
+        <p>Ever since I was a child, I have been passionate about football.</p>
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" title="Enter your password" placeholder="Enter password">
+
+        <ul>
+            <li class="list-item">one</li>
+            <li class="list-item">two</li>
+            <li class="list-item">three</li>
+            <li class="list-item">four</li>
+        </ul>
+    </div>
+</body>
+</html>
+
+
+
+//difference between textContent and innerText and innerHTML
+if we use textContent, it will return all the text content of the element, including hidden elements and script/style tags. It does not consider the CSS styling and will return the text as it is in the DOM.
+if we use innerText, it will return only the visible text content of the element, excluding hidden elements and script/style tags. It considers the CSS styling and will return the text as it is displayed on the page.
+if we use innerHTML, it will return the HTML content of the element, including any HTML tags and content.
+
+/*
+title.textContent
+    'DOM learning on Chai aur code test text'
+title.innerText
+    'DOM learning on Chai aur code'
+title.innerHTML
+    'DOM learning on Chai aur code <span style="display: none;">test text</span>'    
+*/
+
+//QuerySelector and QuerySelectorAll
+//querySelector will return the first element that matches the specified CSS selector(s) in the document
+//querySelectorAll will return a static NodeList of all elements that match the specified CSS selector(s) in the document
+
+//example:
+/*
+const firstHeading = document.querySelector('h1');
+const allHeadings = document.querySelectorAll('h2');
+console.log(firstHeading); // returns the first h1 element
+console.log(allHeadings); // returns a NodeList of all h2 elements
+*/
+
+//node list is a collection of nodes, which can be elements, text nodes, or comments. It is similar to an array but does not have all the array methods. You can access individual nodes using their index, and you can also iterate over the NodeList using a for loop or forEach method.
+
+//html collection is a collection of HTML elements, which is similar to a NodeList but only contains element nodes. It is also similar to an array but does not have all the array methods. You can access individual elements using their index, and you can also iterate over the HTMLCollection using a for loop or forEach method. By using Array.from() method, we can convert the HTMLCollection into an array and then use array methods on it.
+
+
+//example:
+const mine = document.getElementsByClassName("list-item")
+undefined
+mine
+HTMLCollection(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+const newArr = Array.from(mine)
+undefined
+newArr
+(4) [li.list-item, li.list-item, li.list-item, li.list-item]
+newArr.map( (k) => {
+    k.style.color = "orange"
+})
+(4) [undefined, undefined, undefined, undefined]
