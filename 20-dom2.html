@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM | learning</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <div class="parent">
+        <!-- this is a comment -->
+        <div class="player">Modric</div>
+        <div class="player">Ramos</div>
+        <div class="player">Benzema</div>
+        <div class="player">Vinicius</div>
+    </div>
+</body>
+<script>
+
+    const parent = document.querySelector('.parent');
+    const players = document.querySelectorAll('.player');
+    //console.log(parent); //it gives the first element of the class parent
+    // console.log(players);
+    // console.log(parent.children); 
+    // const playersArray = Array.from(players);
+    // console.log(playersArray);
+    // playersArray.forEach((player) => {
+    //     console.log(player.innerHTML);
+    // });
+    // console.log(parent.children[0].innerHTML);
+    //  for (let i = 0; i < parent.children.length; i++) {
+    //      console.log(parent.children[i].innerHTML);
+    //     }
+    // parent.children[1].style.color = "orange"
+    // console.log(parent.firstElementChild);
+    // console.log(parent.lastElementChild);
+
+    const playerOne = document.querySelector('.player');
+    // console.log(playerOne);
+    // console.log(playerOne.parentElement);
+    // console.log(playerOne.nextElementSibling);//ramos
+    // console.log(playerOne.nextElementSibling.nextElementSibling);//benzema
+    // console.log(playerOne.previousElementSibling);//null
+
+    console.log("NODES: ", parent.childNodes);
+</script>
+</html>
