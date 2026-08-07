@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" type="text/css" href="../styles.css" />
+    <title>Your Local Time</title>
+    <style>
+      body {
+        background-color: #212121;
+        color: #fff;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        margin: 0;
+        
+      }
+      .center {
+        display: flex;
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      #clock {
+        font-size: 40px;
+        background-color: #333;
+        padding: 20px 50px;
+        margin-top: 10px;
+        border-radius: 10px;
+      }
+      .nav {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: #333;
+        display: flex;
+        justify-content: center;
+      }
+      .nav a {
+        height: 50px;
+        width: 100%;
+        text-align: center;
+        text-decoration: none;
+        margin: 0 auto;
+        padding: 10px;
+        color: #fff;
+        
+
+        }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <a href="/" aria-current="page">Home</a>
+    </nav>
+    <div class="center">
+      <div id="banner"><span>Your local time</span></div>
+      <div id="clock"></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
