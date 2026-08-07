@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>chinu dom edit and dlt</title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>    
+</body>
+<script>
+    // function to add a new language to the list with innerHTML but it is not optimal way to add a new language to the list.
+    function addLang(lang){
+        const li = document.createElement('li');
+        li.innerHTML = `${lang}`;
+        document.querySelector('.language').appendChild(li);//ye line ka mtlb hai ki document me se language class ko select karo aur uske andar li ko append karo.
+    }
+    addLang('Python');
+
+    // function to add a new language to the list with textNode and it is optimal way to add a new language to the list because it is more secure and faster than innerHTML.
+    function addOptiLang(lang){
+        const li = document.createElement('li');
+        li.appendChild(document.createTextNode(lang));
+        document.querySelector('.language').appendChild(li);
+
+    }
+    addOptiLang('Java');
+
+    //edit
+    const secondLi = document.querySelector('.language li:nth-child(2)');//bracket k andar jo bhi likha hai wo css selector hai aur ye second li ko select karega.
+    //first way
+    // secondLi.innerHTML = 'C++';//ye line ka mtlb hai ki second li ke text content ko C++ se replace karo. text content ko replace karne ke liye innerHTML ka use kiya gaya hai.ham textcontent bhi use kar sakte hai but innerHTML ka use kiya gaya hai.
+
+    //second way
+
+    // const newText = document.createTextNode('C++');//ye line ka mtlb hai ki ek new text node create karo jiska text content C++ ho.
+    // secondLi.replaceChild(newText, secondLi.firstChild);//ye line ka mtlb hai ki second li ke first child ko new text node se replace karo.
+
+    //third way
+    const newLi = document.createElement('li');//ye line ka mtlb hai ki ek new ul create karo.
+    newLi.textContent = 'C++';//ye line ka mtlb hai ki new ul ke text content ko C++ se replace karo.
+    secondLi.replaceWith(newLi);//ye line ka mtlb hai ki second li ko new ul se replace karo.
+    
+
+    //edit another example
+    const firstLi = document.querySelector('.language li:first-child');//ye line ka mtlb hai ki document me se language class ke first li ko select karo.
+    firstLi.outerHTML = '<li>HTML</li>';//ye line ka mtlb hai ki first li ke outerHTML ko HTML se replace karo. outerHTML ka use karke hum element ke andar ke content ko bhi replace kar sakte hai.
+
+    addOptiLang('CSS');//ye line ka mtlb hai ki addOptiLang function ko call karo aur usme CSS pass karo. ye line ke baad language list me CSS add ho jayega.
+    addOptiLang('React');//ye line ka mtlb hai ki addOptiLang function ko call karo aur usme React pass karo. ye line ke baad language list me React add ho jayega.
+
+    //delete
+    const lastLang = document.querySelector('li:last-child');//ye line ka mtlb hai ki document me se last li ko select karo.
+    lastLang.remove();//ye line ka mtlb hai ki last li ko remove karo.
+
+    const thirdLang = document.querySelector('li:nth-child(3)');//ye line ka mtlb hai ki document me se third li ko select karo.
+    thirdLang.parentNode.removeChild(thirdLang);//ye line ka mtlb hai ki third li ke parent node ko select karo aur uske andar se third li ko remove karo.
+</script>
+</html>
