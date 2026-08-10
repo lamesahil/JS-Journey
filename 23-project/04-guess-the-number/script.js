@@ -17,7 +17,7 @@ let playGame = true;
 if(playGame) {
     submit.addEventListener("click", function(e){
         e.preventDefault(); //prevents page from reloading when submit button is clicked
-        const guess = parseInt(userInput.value);
+        const guess = parseInt(userInput.value);//parseInt converts the string to a number
         console.log(guess, random);
         validateGuess(guess);
     });
@@ -58,7 +58,7 @@ function checkGuess(guess) {
 
 function displayGuess(guess) {
     userInput.value = "";
-    guessSlot.innerHTML += `${guess} `;
+    guessSlot.innerHTML += `${guess} `; // display the guess in the guessSlot div
     numGuess++;
     remaining.innerHTML = `${11 - numGuess}`;
 }

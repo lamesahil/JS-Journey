@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events with Chinu</title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+ //.onclick
+ //normal way
+//  document.getElementById("owl").onclick = function() {
+//     alert("You clicked on the owl image");
+//  }
+
+    //second way
+    // document.getElementById("prayer").addEventListener("click", function() {
+    //     alert("You clicked on the prayer image");
+    // });
+
+    //attachEvent()-> it is used in older versions of IE
+    // jQuery - on -> it is used in jQuery library its a method to attach event listener to an element we can use it like this $("#prayer").on("click", function() { alert("You clicked on the prayer image"); });
+    
+    // type, timestamp, defaultPrevented
+    //type - it is the type of event that occurred, such as "click" or "keydown".
+    //timestamp - it is the time at which the event occurred, measured in milliseconds since the epoch (January 1, 1970).
+    //defaultPrevented - it is a boolean value that indicates whether the default action associated with the event has been prevented. If the default action has been prevented, this property will be true; otherwise, it will be false.
+
+
+    //example:
+    // document.getElementById("google").addEventListener("click", function(event) {
+    //     event.preventDefault(); // Prevent the default action (e.g., navigating to a link)
+    //     console.log("Event type: " + event.type);
+    //     console.log("Timestamp: " + event.timeStamp);
+    //     console.log("Default prevented: " + event.defaultPrevented);
+    // });
+
+    // target, toElement, srcElement, currentTarget,
+    //target - it is a reference to the element that triggered the event. For example, if you click on a button, the target will be the button element.
+    //toElement - it is a reference to the element that the mouse pointer is moving to. It is used in mouseover and mouseout events to determine which element the mouse is entering or leaving.
+    //srcElement - it is a reference to the element that triggered the event. It is similar to the target property, but it is specific to Internet Explorer. In modern browsers, you should use the target property instead.
+    //currentTarget - it is a reference to the element that the event listener is attached to. It is useful when you have multiple event listeners on different elements and want to know which element the event listener is currently handling.
+    //example:
+    document.getElementById("photoshop").addEventListener("click", function(event) {
+        console.log("Target: " + event.target.id);
+        console.log("To Element: " + event.toElement);
+        console.log("Source Element: " + event.srcElement.id);
+        console.log("Current Target: " + event.currentTarget.id);
+    });
+
+    // clientX, clientY, screenX, screenY
+    //clientX - it is the horizontal coordinate of the mouse pointer relative to the viewport (the visible area of the web page) when the event occurred.
+    //clientY - it is the vertical coordinate of the mouse pointer relative to the viewport when the event occurred.
+    //screenX - it is the horizontal coordinate of the mouse pointer relative to the entire screen when the event occurred.
+    //screenY - it is the vertical coordinate of the mouse pointer relative to the entire screen when the event occurred.
+    //difference between clientX/clientY and screenX/screenY is that clientX/clientY give you the position of the mouse pointer relative to the visible area of the web page, while screenX/screenY give you the position of the mouse pointer relative to the entire screen. This means that if you have a web page that is scrolled down, the clientX/clientY values will change as you scroll, while the screenX/screenY values will remain constant.
+    //example:
+    // document.getElementById("japan").addEventListener("click", function(event) {
+    //     console.log("Client X: " + event.clientX);
+    //     console.log("Client Y: " + event.clientY);
+    //     console.log("Screen X: " + event.screenX);
+    //     console.log("Screen Y: " + event.screenY);
+    // });
+
+        // altkey, ctrlkey, shiftkey, keyCode
+    //altKey - it is a boolean value that indicates whether the Alt key was pressed when the event occurred.
+    //ctrlKey - it is a boolean value that indicates whether the Ctrl key was pressed when the event occurred.
+    //shiftKey - it is a boolean value that indicates whether the Shift key was pressed when the event occurred.
+    //keyCode - it is a numeric value that represents the key that was pressed when the event occurred. Each key on the keyboard has a unique keyCode value.
+    //example:
+    document.addEventListener("keydown", function(event) {
+        console.log("Alt Key: " + event.altKey);
+        console.log("Ctrl Key: " + event.ctrlKey);
+        console.log("Shift Key: " + event.shiftKey);
+        console.log("Key Code: " + event.keyCode);
+    });
+
+
+
+
+    //difference between event bubbling and event capturing
+    //Event bubbling is the default behavior of events in the DOM. When an event occurs on an element, it first runs the handlers on that element, then on its parent, and so on up to the root of the document.
+    //Event capturing is the opposite of event bubbling. It occurs when an event is first captured by the root of the document and then propagated down to the target element.
+    //example:
+    document.getElementById("japan").addEventListener("click", function(event) {
+        console.log("Event Bubbling: " + event.eventPhase);
+    }, false);
+    document.getElementById("japan").addEventListener("click", function(event) {
+        console.log("Event Capturing: " + event.eventPhase);
+    }, true);
+
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation()
+    //     console.log("google clicked");
+    // }, false)
+
+    document.getElementById('images').addEventListener('click',function(e){
+        if(e.target.tagName === 'IMG'){
+             let removeIt = e.target.parentNode
+            removeIt.remove();
+        }
+    }, false)
+</script>    
+</html>
