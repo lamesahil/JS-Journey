@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Chai aur code</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayChinu = function(){
+        console.log("Chinu");
+    }
+    const sayDate = function(str){
+        console.log(str, new Date());
+    }
+    const changeText = function(){
+        document.querySelector('h1').innerHTML = "best JS series"
+    }
+
+    const changeMe = setTimeout(changeText, 2000)
+/*
+    document.querySelector('#stop').addEventListener('click', function(){
+        clearTimeout(changeMe)
+        console.log("STOPPED")
+    })
+*/
+//my solution - 
+    /*document.querySelector('#start').addEventListener('click', function(){
+        let intervalId = setInterval(sayDate, 1000, "Chinu");
+        console.log("STARTED");
+        document.querySelector('#stop').addEventListener('click', function(){
+        clearInterval(intervalId)
+        console.log("STOPPED")
+    })
+    })
+    */
+//gemini solution - 
+    let intervalId; // Variable ko bahar declare kiya taaki dono isko use kar sakein
+document.querySelector('#start').addEventListener('click', function(){
+    // Ye if-condition check karti hai ki kya interval already chal raha hai?
+    // Agar nahi chal raha (!intervalId), tabhi naya interval start karo.
+    if (!intervalId) {
+        intervalId = setInterval(sayDate, 1000, "Chinu");
+        console.log("STARTED");
+    }
+});
+document.querySelector('#stop').addEventListener('click', function(){
+    clearInterval(intervalId); // Interval rok diya
+    intervalId = null; // ID ko khali kar diya taaki wapas start ho sake
+    console.log("STOPPED");
+});
+    
+</script>
+</html>
